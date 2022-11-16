@@ -25,15 +25,20 @@ To train the Pix2Pix model for generation, use
 
 ## Results
 The proteins are quite diverse, and each protein only have around 5 images, so when trained on all the proteins together the regression model does not seem to do so well:
+
 ![reg all](results/reg_all1.png)
 ![reg all](results/reg_all2.png)
+
 Here the left column the the ground truth of the protein location from a test set image; the middle column is the generated location image; the right is the nucleus staining image that is given as model input.
 
 When we train the regression model on only protein that appear within the nucleus, the results are much better:
+
 ![regn](results/reg1.png)
 ![regn](results/reg4.png)
 
 The generative model seems to produce much sharper images, although it also "hallucinates" some signal:
+
 ![gen](results/gen1.png)
 ![gen](results/gen2.png)
+
 This is probably because the GANs are not trained on a pixel-wise loss, but instead on a combination of pixel-wise and discriminator losses, which encourages realistic reconstructions.
